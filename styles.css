@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(135deg, #0b3d91, #d2d2d2, #ffd700);
+    background-size: cover;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 51, 0, 0.9);
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+    position: relative;
+}
+#container {
+    display: flex;
+    flex: 1;
+}
+#sidebar {
+    width: 200px;
+    background-color: rgba(0, 51, 0, 0.8);
+    padding: 20px;
+    color: #fff;
+    border-right: 2px solid #333;
+}
+#content {
+    flex: 1;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-left: 1px solid #ddd;
+}
+h1 {
+    color: #0b3d91;
+}
+form {
+    margin-bottom: 20px;
+}
+input, textarea, button {
+    margin-right: 10px;
+    padding: 8px;
+    width: 90%;
+    display: block;
+    margin-bottom: 10px;
+}
+textarea {
+    height: 100px;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+footer {
+    background-color: rgba(0, 51, 0, 0.9);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+gmp-map {
+    height: 300px;
+    width: 100%;
+    border: 2px solid #0b3d91;
+    border-radius: 5px;
+}
+/* Hamburger Icon */
+.hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    padding: 10px;
+}
+.hamburger-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+}
+/* Dropdown Menu */
+#dropdown-menu {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: rgba(0, 51, 0, 0.9);
+    border: 1px solid #333;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    list-style: none;
+    padding: 10px 0;
+    width: 150px;
+    text-align: left;
+}
+#dropdown-menu li {
+    padding: 10px;
+}
+#dropdown-menu li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+#dropdown-menu li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.hidden {
+    display: none;
+}

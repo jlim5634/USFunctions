@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Event Calendar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDV4I0HHuKDx7d4PuGXjhzOt0ADm1usn9A&libraries=maps,marker&callback=initMap"
+    async defer>
+    </script>
+</head>
+<body>
+    <header>
+        <div>USFunctions</div>
+        <div id="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="dropdown-menu" class="hidden">
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#info">Info</a></li>
+                <li><a href="#help">Help</a></li>
+                <li><a href="#settings">Settings</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div id="container">
+        <aside id="sidebar"></aside>
+
+        <main id="content">
+            <h1>USFunctions Event Calendar</h1>
+            <form method="POST" action="/add_event">
+                <input type="text" name="event_name" placeholder="Event Name" required>
+                <input type="date" name="event_date" required>
+                <input type="time" name="event_time" required>
+                <input type="text" name="event_address" placeholder="Enter Location" required>
+                <textarea name="event_description" placeholder="Description" required></textarea>
+                <button type="submit">Add Event</button>
+            </form>
+
+            <h2>Upcoming Events</h2>
+            <ul>
+                {% if events %}
+                    {% for event in events %}
+                        <li><strong>{{ event.name }}</strong> - {{ event.date }} - {{ event.time }} - {{ event.location }}<br>{{ event.description }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li>No events scheduled</li>
+                {% endif %}
+            </ul>
+
+            <div id="map" style="height: 400px; width: 100%;"></div>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>Visit the event calendar at <a href="https://www.USFunctions.com">www.USFunctions.com</a></p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('dropdown-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: {lat: 37.7749, lng: -122.4194},
+                zoom: 10, 
+            });
+
+            const marker = new google.maps.Marker({
+                position: { lat: 37.7766, lng: -122.4507 },
+                map: map,
+                title: "San Francisco",
+            });
+        }
+    </script>
+</body>
+</html>
